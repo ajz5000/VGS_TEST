@@ -1,0 +1,30 @@
+{% extends '_base.html' %}
+
+{% block content %}
+
+
+<main>
+
+    <b>Redacted Data</b>
+
+    <p>Date Entered: {{ transaction.date }}</p>
+    <p>CC Number: {{ transaction.cc_num }}</p>
+    <p>Exp Date: {{ transaction.exp_date }}</p>
+    <p>CVC Num: {{ transaction.cvc_num }}</p><br>
+
+    <b>Reveal Original Data</b>
+
+    <form action="/reveal" method="POST">
+        {% csrf_token %}
+        <input type="text" name="CCNum" size="35"value="{{ transaction.cc_num }}">
+        <label for="CCNum">Credit Card Number</label><br>
+        <input type="text" name="ExpDate" size="35" value="{{ transaction.exp_date }}">
+        <label for="ExpDate">Expiration Date</label><br>
+        <input type="text" name="CVCNum" size="35" value="{{ transaction.cvc_num }}">
+        <label for="CVCNum">CVC Number</label><br>
+        <input type="submit" value="Reveal">
+    </form>
+
+</main>
+
+{% endblock content %}

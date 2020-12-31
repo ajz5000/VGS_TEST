@@ -1,0 +1,52 @@
+data:
+  - attributes:
+      created_at: '2020-12-29T19:01:19'
+      destination_override_endpoint: 'https://1a6674c36190.ngrok.io'
+      entries:
+        - classifiers: {}
+          config:
+            condition: AND
+            rules:
+              - condition: null
+                expression:
+                  field: PathInfo
+                  operator: matches
+                  type: string
+                  values:
+                    - /add
+              - condition: null
+                expression:
+                  field: Method
+                  operator: equals
+                  type: string
+                  values:
+                    - POST
+          id: e8564006-9141-4713-94f7-8e7d4e919657
+          id_selector: null
+          operation: REDACT
+          operations: null
+          phase: REQUEST
+          public_token_generator: UUID
+          targets:
+            - body
+          token_manager: PERSISTENT
+          transformer: FORM_FIELD
+          transformer_config:
+            - CCNum
+            - ExpDate
+            - CVCNum
+          transformer_config_map: null
+          type: null
+      host_endpoint: (.*)\.verygoodproxy\.com
+      id: dd833275-358c-47ef-950c-c5f736d72156
+      ordinal: null
+      port: 80
+      protocol: http
+      source_endpoint: '*'
+      tags:
+        name: echo.apps.verygood.systems-ivory-crescent
+        source: RouteContainer
+      updated_at: '2020-12-29T20:34:47'
+    id: dd833275-358c-47ef-950c-c5f736d72156
+    type: rule_chain
+version: 1

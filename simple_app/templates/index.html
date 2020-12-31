@@ -1,0 +1,27 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<main>
+    <b>Enter new transaction</b>
+    <form action="/add" method="POST">
+        {% csrf_token %}
+        <input type="text" name="CCNum" id="CCNum" value="">
+        <label for="CCNum">Credit Card Number</label><br>
+        <input type="text" name="ExpDate" id="ExpDate" value="">
+        <label for="ExpDate">Expiration Date</label><br>
+        <input type="text" name="CVCNum" id="CVCNum" value="">
+        <label for="CVCNum">CVC Number</label><br>
+        <input type="submit" value="Add">
+    </form><br>
+
+    <b>Transaction List (Application Storage)</b>
+    <ul>
+        {% for transaction in transaction_list %}
+            <li><a href="{% url 'detail' transaction.id %}">Transaction {{ transaction.id }}</a></li>
+        {% empty %}
+            <li>Empty</li>
+        {% endfor %}
+    </ul>
+</main>
+
+{% endblock content %}
